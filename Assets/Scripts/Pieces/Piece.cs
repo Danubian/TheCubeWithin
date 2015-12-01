@@ -35,7 +35,7 @@ public class Piece : MonoBehaviour {
 		if(m_display != null)
 		{
 			m_display.GetComponent<MeshRenderer>().material.color = 
-				//			Color.red;
+//							Color.red;
 				new Color(
 					(m_x - GlobalScope.CUBE_OFFSET) * 1f / (GlobalScope.CUBE_SIZE - 1),
 					(m_y - GlobalScope.CUBE_OFFSET) * 1f / (GlobalScope.CUBE_SIZE - 1),

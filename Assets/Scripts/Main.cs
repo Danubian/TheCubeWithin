@@ -7,7 +7,7 @@ public class Main : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		cube = new Cube2();
-//		StartCoroutine(cube.Scramble(100));
+		StartCoroutine(cube.Scramble(1000));
 	}
 	
 	
