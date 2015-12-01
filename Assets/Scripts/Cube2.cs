@@ -165,7 +165,7 @@ public class Cube2 : MonoBehaviour{
 			{
 				for(int y = 0; y < CUBE_SIZE; y++)
 				{
-					Piece piece = oldMatrix[x,y];
+					Piece piece = newMatrix[x,y];
 					piece.UpdatePosition(x + CUBE_OFFSET, y + CUBE_OFFSET, layerIndex + CUBE_OFFSET);
 					m_cube[x,y,layerIndex] = piece;
 				}
@@ -174,7 +174,29 @@ public class Cube2 : MonoBehaviour{
 			break;
 		}
 	}
-	
+
+	public IEnumerator Scramble(int moves)
+	{
+
+//		Random.Range(0, 
+		
+		System.Random random = new System.Random();
+		Array values = Enum.GetValues(typeof(Face));
+		Face randomFace;
+		int randomLayerIndex;
+		bool forward;
+		for(int i = 0; i < moves; i++)
+		{
+			randomFace = (Face)values.GetValue(random.Next(values.Length));
+			randomLayerIndex = random.Next(CUBE_SIZE);
+			forward = random.NextDouble() > 0.5;
+
+			RotateLayer(randomFace, randomLayerIndex, forward);
+
+			yield return new WaitForSeconds(GlobalScope.SCRAMBLE_DELAY);
+		}
+	}
+
 	//Returns a count of the number of true arguments
 	public static int CountTrue(params bool[] args)
 	{
